@@ -23,13 +23,22 @@
 #ifndef ShaderMaker_H
 #define ShaderMaker_H
 
+
+#define MAXCUSTOMPARAMS 4
+
 #include <stdio.h>
 #include <string>
 #include <time.h> // for date
+#include <iostream>
+
 #include "FFGL.h" // windows : msvc project needs the FFGL folder in its include path
 #include "FFGLLib.h"
 #include "FFGLShader.h"
 #include "FFGLPluginSDK.h"
+
+
+#include "FileUtils.h"
+
 
 #if (!(defined(WIN32) || defined(_WIN32) || defined(__WIN32__)))
 // posix
@@ -44,7 +53,9 @@ typedef INT BOOL;
 typedef int64_t __int64; 
 typedef int64_t LARGE_INTEGER;
 #include <ctime>
+
 #include <chrono> // c++11 timer
+using namespace std;
 #endif
 
 #define GL_SHADING_LANGUAGE_VERSION	0x8B8C
@@ -94,6 +105,20 @@ protected:
 	float m_UserBlue;
 	float m_UserAlpha;
 
+
+  typedef struct {
+    GLint location;
+    float value=0;
+    float min=0;
+    float max=1;
+    float getNormalizedValue(){
+      return (value - min)/(max-min);
+    }
+
+  }customParam;
+
+  customParam m_customParams[MAXCUSTOMPARAMS];
+
 	// Flags
 	bool bInitialized;
 
@@ -124,6 +149,12 @@ protected:
 	// Shader uniforms
 	//
 
+  time_t lastModTime;
+  std::chrono::system_clock::time_point lastFileCheck;
+  void checkFileChanged();
+  std::string shaderRootPath,shaderName;
+  bool lastShaderLoaded;
+
 	// Time
 	float m_time;
 
@@ -152,7 +183,7 @@ protected:
 
 	int m_initResources;
 	FFGLExtensions m_extensions;
-    FFGLShader m_shader;
+  FFGLShader m_shader;
 
 	GLint m_inputTextureLocation;
 	GLint m_inputTextureLocation1;
@@ -177,7 +208,7 @@ protected:
 	void SetDefaults();
 	void StartCounter();
 	double GetCounter();
-	bool LoadShader(std::string shaderString);
+	bool LoadShader(const string & , string &);
 	void CreateRectangleTexture(FFGLTextureStruct Texture, FFGLTexCoords maxCoords, GLuint &glTexture, GLenum texunit, GLuint &fbo, GLuint hostFbo);
 };
 

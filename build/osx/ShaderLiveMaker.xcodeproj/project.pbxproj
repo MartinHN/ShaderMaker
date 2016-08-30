@@ -21,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		2DA287A70AEEFE950030A4DD /* OpenGL.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGL.framework; path = /System/Library/Frameworks/OpenGL.framework; sourceTree = "<absolute>"; };
+		3FB1C7AE1D744E6D00EE549D /* FileUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FileUtils.h; path = ../FileUtils.h; sourceTree = "<group>"; };
 		AC62BFA31A9E16ED00174CF4 /* ShaderMaker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = ShaderMaker.cpp; path = ../../ShaderMaker.cpp; sourceTree = "<group>"; };
 		AC62BFA51A9E170100174CF4 /* FFGL.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FFGL.cpp; path = ../../FFGL/FFGL.cpp; sourceTree = "<group>"; };
 		AC62BFA71A9E170100174CF4 /* FFGLExtensions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FFGLExtensions.cpp; path = ../../FFGL/FFGLExtensions.cpp; sourceTree = "<group>"; };
@@ -32,7 +33,7 @@
 		AC62BFB41A9E170100174CF4 /* FFGLShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FFGLShader.cpp; path = ../../FFGL/FFGLShader.cpp; sourceTree = "<group>"; };
 		AC62BFBF1A9E178700174CF4 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AC62BFC11A9E247900174CF4 /* ShaderMaker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ShaderMaker.h; path = ../../ShaderMaker.h; sourceTree = "<group>"; };
-		ACB4E01C1A9268BC00E4C1D2 /* FFGLShaderMaker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FFGLShaderMaker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
+		ACB4E01C1A9268BC00E4C1D2 /* ShaderLiveMaker.bundle */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShaderLiveMaker.bundle; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,7 +61,7 @@
 		2DA285A10AEE5E480030A4DD /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				ACB4E01C1A9268BC00E4C1D2 /* FFGLShaderMaker.bundle */,
+				ACB4E01C1A9268BC00E4C1D2 /* ShaderLiveMaker.bundle */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -70,6 +71,7 @@
 			children = (
 				AC62BFC11A9E247900174CF4 /* ShaderMaker.h */,
 				AC62BFA31A9E16ED00174CF4 /* ShaderMaker.cpp */,
+				3FB1C7AE1D744E6D00EE549D /* FileUtils.h */,
 			);
 			name = ShaderMaker;
 			sourceTree = "<group>";
@@ -92,21 +94,22 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		ACB4E00F1A9268BC00E4C1D2 /* ShaderMaker */ = {
+		ACB4E00F1A9268BC00E4C1D2 /* ShaderLiveMaker */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = ACB4E0191A9268BC00E4C1D2 /* Build configuration list for PBXNativeTarget "ShaderMaker" */;
+			buildConfigurationList = ACB4E0191A9268BC00E4C1D2 /* Build configuration list for PBXNativeTarget "ShaderLiveMaker" */;
 			buildPhases = (
 				ACB4E0101A9268BC00E4C1D2 /* Resources */,
 				ACB4E0111A9268BC00E4C1D2 /* Sources */,
 				ACB4E0181A9268BC00E4C1D2 /* Frameworks */,
+				3FB1C7AD1D74470D00EE549D /* ShellScript */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
-			name = ShaderMaker;
+			name = ShaderLiveMaker;
 			productName = FFGLBrightness;
-			productReference = ACB4E01C1A9268BC00E4C1D2 /* FFGLShaderMaker.bundle */;
+			productReference = ACB4E01C1A9268BC00E4C1D2 /* ShaderLiveMaker.bundle */;
 			productType = "com.apple.product-type.bundle";
 		};
 /* End PBXNativeTarget section */
@@ -116,7 +119,7 @@
 			isa = PBXProject;
 			attributes = {
 			};
-			buildConfigurationList = 2DA285940AEE5D640030A4DD /* Build configuration list for PBXProject "ShaderMaker" */;
+			buildConfigurationList = 2DA285940AEE5D640030A4DD /* Build configuration list for PBXProject "ShaderLiveMaker" */;
 			compatibilityVersion = "Xcode 2.4";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -128,7 +131,7 @@
 			projectDirPath = "";
 			projectRoot = ../../..;
 			targets = (
-				ACB4E00F1A9268BC00E4C1D2 /* ShaderMaker */,
+				ACB4E00F1A9268BC00E4C1D2 /* ShaderLiveMaker */,
 			);
 		};
 /* End PBXProject section */
@@ -143,6 +146,22 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		3FB1C7AD1D74470D00EE549D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "OUTFOLDER=/Applications/Resolume\\ Arena\\ 5.0.1/plugins/vfx\nBUILDPATH=$BUILT_PRODUCTS_DIR/$FULL_PRODUCT_NAME\necho $OUTFOLDER/$FULL_PRODUCT_NAME\nrm -r \"$OUTFOLDER/$FULL_PRODUCT_NAME\"\ncp -r \"$BUILDPATH\" \"$OUTFOLDER/$FULL_PRODUCT_NAME\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		ACB4E0111A9268BC00E4C1D2 /* Sources */ = {
@@ -213,7 +232,7 @@
 					OpenGL,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = ShaderMaker;
+				PRODUCT_NAME = ShaderLiveMaker;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -244,7 +263,7 @@
 					OpenGL,
 				);
 				PREBINDING = NO;
-				PRODUCT_NAME = ShaderMaker;
+				PRODUCT_NAME = ShaderLiveMaker;
 				WRAPPER_EXTENSION = bundle;
 				ZERO_LINK = NO;
 			};
@@ -253,7 +272,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2DA285940AEE5D640030A4DD /* Build configuration list for PBXProject "ShaderMaker" */ = {
+		2DA285940AEE5D640030A4DD /* Build configuration list for PBXProject "ShaderLiveMaker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2DA285950AEE5D640030A4DD /* Debug */,
@@ -262,7 +281,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		ACB4E0191A9268BC00E4C1D2 /* Build configuration list for PBXNativeTarget "ShaderMaker" */ = {
+		ACB4E0191A9268BC00E4C1D2 /* Build configuration list for PBXNativeTarget "ShaderLiveMaker" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				ACB4E01A1A9268BC00E4C1D2 /* Debug */,
